@@ -1,0 +1,62 @@
+#!/usr/bin/expect -f
+
+# Set the port to listen on
+set port 25
+
+# Start listening for incoming connections
+spawn sudo nc -l $port
+
+# Send a 220 response to indicate that the server is ready
+send "220 localhost ESMTP mock-smtp\r\n"
+
+# Expect an EHLO or HELO command from the client
+expect {
+    "EHLO" {
+        # Send a 250 response to indicate that the command was accepted
+        send "250-localhost\r\n"
+        send "250-SIZE 10240000\r\n"
+        #send "250-AUTH PLAIN LOGIN\r\n"
+        #send "250-STARTTLS\r\n"
+        send "250 HELP\r\n"
+    }
+    "HELO" {
+        # Send a 250 response to indicate that the command was accepted
+        send "250 localhost\r\n"
+    }
+}
+
+# Expect a STARTTLS command from the client
+expect "STARTTLS" {
+    # Send a 220 response to indicate that the command was accepted
+    send "220 Ready to start TLS\r\n"
+}
+
+# Expect a MAIL FROM command from the client
+expect "MAIL FROM" {
+    # Send a 250 response to indicate that the command was accepted
+    send "250 OK\r\n"
+}
+
+# Expect a RCPT TO command from the client
+expect "RCPT TO" {
+    # Send a 250 response to indicate that the command was accepted
+    send "250 OK\r\n"
+}
+
+# Expect a DATA command from the client
+expect "DATA" {
+    # Send a 354 response to indicate that the server is ready to receive data
+    send "354 End data with <CR><LF>.<CR><LF>\r\n"
+
+    # Expect the end of data marker (a line containing only a period)
+    expect "\r\n.\r\n"
+
+    # Send a 250 response to indicate that the data was accepted
+    send "250 OK\r\n"
+}
+
+# Expect a QUIT command from the client
+expect "QUIT" {
+    # Send a 221 response to indicate that the connection is being closed
+    send "221 Bye\r\n"
+}

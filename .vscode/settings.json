@@ -1,0 +1,8 @@
+{
+    "cmake.installPrefix": "/opt/rest2smtp",
+    "cmake.configureOnOpen": true,
+    "cmake.configureArgs": [
+        "-DUSE_SYSTEMD=OFF"
+    ],
+    "cmake.generator": "Unix Makefiles"
+}

@@ -1,0 +1,6 @@
+{
+    "from": "John Doe <j.doe@mail.co.uk>",
+    "to": "Jane Doe <j.doe@mail.com>",
+    "subject": "Test message",
+    "message": "This is a test message with free text without sense."
+}

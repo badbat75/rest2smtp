@@ -1,0 +1,14 @@
+### HTTP Server configuration
+#http_port=8080
+#https_port=8443
+#cert_path="@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_SYSCONFDIR@/rest2smtp/cert.pem"
+#key_path="@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_SYSCONFDIR@/rest2smtp/key.pem"
+
+### Queue configuration
+#queue_path="@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LOCALSTATEDIR@/spool/rest2smtp"
+#queue_isenabled=false
+
+### SMTP Server configuration
+#smtp_server="smtp://localhost"
+#smtp_user="username"
+#smtp_passwd="password"

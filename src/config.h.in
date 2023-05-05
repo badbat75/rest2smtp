@@ -1,0 +1,15 @@
+#define CONFIG_FILE "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_SYSCONFDIR@/rest2smtp/rest2smtp.conf"
+
+// HTTP defaults
+#define HTTP_PORT 8080
+#define HTTPS_PORT 8443
+
+#define CERT_PATH "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_SYSCONFDIR@/rest2smtp/cert.pem"
+#define KEY_PATH "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_SYSCONFDIR@/rest2smtp/key.pem"
+
+// Queue defaults
+#define QUEUE_PATH "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LOCALSTATEDIR@/spool/rest2smtp"
+#define QUEUE_ISENABLED 1
+
+// SMTP defaults
+#define SMTP_URL "smtp://localhost:25"
